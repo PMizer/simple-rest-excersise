@@ -43,6 +43,8 @@ public class BookServiceImpl implements BookService {
 
         BookDTO returnDto = bookMapper.bookToBookDTO(savedBook);
 
+        returnDto.setId(savedBook.getId());
+
         return returnDto;
     }
 }
