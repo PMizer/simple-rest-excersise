@@ -31,7 +31,11 @@ public class BookServiceImpl implements BookService {
         return bookRepository
                 .findAll()
                 .stream()
-                .map(bookMapper::bookToBookDTO)
+                .map(book -> {
+                    BookDTO bookDTO = bookMapper.bookToBookDTO(book);
+                    bookDTO.setId(book.getId());
+                    return bookDTO;
+                })
                 .collect(Collectors.toList());
     }
 
